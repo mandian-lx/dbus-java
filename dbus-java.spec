@@ -3,7 +3,7 @@
 
 Name:           dbus-java
 Version:        2.3.1
-Release:        %mkrel 0.0.1
+Release:        %mkrel 0.0.2
 Epoch:          0
 Summary:        Java bindings for D-Bus
 License:        GPL
@@ -12,6 +12,7 @@ URL:            http://dbus.freedesktop.org/
 Source0:        http://dbus.freedesktop.org/releases/dbus-java/dbus-java-%{version}.tar.gz
 Requires:       jpackage-utils >= 0:1.6
 Requires:       libmatthew-java
+BuildRequires:  docbook-dtd41-sgml
 BuildRequires:  docbook-utils
 BuildRequires:  jpackage-utils >= 0:1.6
 BuildRequires:  libmatthew-java
