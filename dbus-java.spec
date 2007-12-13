@@ -2,8 +2,8 @@
 %define gcj_support     1
 
 Name:           dbus-java
-Version:        2.3.1
-Release:        %mkrel 0.0.3
+Version:        2.3.2
+Release:        %mkrel 0.0.1
 Epoch:          0
 Summary:        Java bindings for D-Bus
 License:        GPL
@@ -44,6 +44,8 @@ Javadoc for %{name}.
 %prep
 %setup -q
 %{__mkdir_p} api
+%{__perl} -pi -e 's|.*Class-Path.*$||g' Makefile
+/bin/touch Manifest
 %{__perl} -pi -e 's|docbook-to-man|/bin/true|g' Makefile
 
 %build
