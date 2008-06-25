@@ -1,9 +1,9 @@
 %define section         free
-%define gcj_support     1
+%define gcj_support     0
 
 Name:           dbus-java
-Version:        2.4
-Release:        %mkrel 0.0.2
+Version:        2.5
+Release:        %mkrel 0.0.1
 Epoch:          0
 Summary:        Java bindings for D-Bus
 License:        GPL
@@ -14,6 +14,7 @@ Requires:       jpackage-utils >= 0:1.6
 Requires:       libmatthew-java
 BuildRequires:  docbook-dtd41-sgml
 BuildRequires:  docbook-utils
+BuildRequires:  tex4ht
 BuildRequires:  java-rpmbuild >= 0:1.6
 BuildRequires:  libmatthew-java
 %if %{gcj_support}
@@ -64,26 +65,7 @@ export OPT_JAR_LIST=:
   JCFLAGS="-nowarn -source 1.5" \
   JAVA_HOME=%{java_home}
 
-# FIXME: sinjdoc bombs on some files
-for i in \
-  ./org/freedesktop/dbus/AbstractConnection.java \
-  ./org/freedesktop/dbus/test/TestRemoteInterface.java \
-  ./org/freedesktop/dbus/test/cross_test_server.java \
-  ./org/freedesktop/dbus/viewer/DBusViewer.java \
-; do
-    %{__mv} ${i} ${i}.bak
-done
-
 %{javadoc} -d api `%{_bindir}/find . -name '*.java'`
-
-for i in \
-  ./org/freedesktop/dbus/AbstractConnection.java \
-  ./org/freedesktop/dbus/test/TestRemoteInterface.java \
-  ./org/freedesktop/dbus/test/cross_test_server.java \
-  ./org/freedesktop/dbus/viewer/DBusViewer.java \
-; do
-    %{__mv} ${i}.bak ${i}
-done
 
 %install
 %{__rm} -rf %{buildroot}
@@ -129,9 +111,7 @@ for man in `%{_bindir}/find . -name '*.sgml'`; do
     %{__cp} -a ${name}/*.1 %{buildroot}%{_mandir}/man1/${name}.1
 done
 
-%if %{gcj_support}
-%{_bindir}/aot-compile-rpm
-%endif
+%{gcj_compile}
 
 %clean
 %{__rm} -rf %{buildroot}
@@ -150,10 +130,7 @@ done
 %attr(0755,root,root) %{_bindir}/*
 %{_javadir}/*.jar
 %{_mandir}/man1/*.1*
-%if %{gcj_support}
-%dir %{_libdir}/gcj/%{name}
-%attr(-,root,root) %{_libdir}/gcj/%{name}/*
-%endif
+%{gcj_files}
 
 %files javadoc
 %defattr(0644,root,root,0755)
