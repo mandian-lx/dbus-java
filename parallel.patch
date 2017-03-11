@@ -1,0 +1,14 @@
+--- a/Makefile	2008-07-07 10:25:37.000000000 -0400
++++ b/Makefile	2008-07-07 14:08:02.000000000 -0400
+@@ -128,9 +128,9 @@
+ 	(cd doc; dvips -o dbus-java.ps dbus-java.dvi)
+ doc/dbus-java.pdf: doc/dbus-java.dvi .doc
+ 	(cd doc; pdflatex ../dbus-java.tex)
+-doc/dbus-java/index.html: dbus-java.tex .doc
++doc/dbus-java/index.html: dbus-java.tex doc/dbus-java.dvi .doc 
+ 	mkdir -p doc/dbus-java/
+-	(cd doc/dbus-java; TEX4HTENV=/etc/tex4ht/tex4ht.env htlatex ../../dbus-java.tex "xhtml,2" "" "-cvalidate")
++	(cd doc/dbus-java; TEX4HTENV=/usr/share/texmf/tex4ht/base/unix/tex4ht.env htlatex ../../dbus-java.tex "xhtml,2" "" "-cvalidate")
+ 	rm -f doc/dbus-java/*{4ct,4tc,aux,dvi,idv,lg,log,tmp,xref}
+ 	cp doc/dbus-java/dbus-java.html doc/dbus-java/index.html
+ doc/api/index.html: $(SRCDIR)/*.java $(SRCDIR)/dbus/*.java .doc
