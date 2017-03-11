@@ -1,2 +1,3 @@
 sources:
-  "dbus-java-2.5.1.tar.gz:"	7df2a9eef164ec4127df7c598dbe02e2fda75da9
+  "dbus-java-osgi-MANIFEST.MF":  39aa667df63ef3130febafee8d49ab1bd3f89da0
+  "dbus-java-2.7.tar.gz":  85f7b0900646fb21cf549b90bd45d34e80cd6ad8

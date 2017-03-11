@@ -1,0 +1,19 @@
+diff -ruN dbus-java-2.7.orig/Makefile dbus-java-2.7/Makefile
+--- dbus-java-2.7.orig/Makefile	2013-11-15 20:49:00.988601756 -0500
++++ dbus-java-2.7/Makefile	2013-11-18 15:53:03.027564517 -0500
+@@ -255,12 +255,9 @@
+ 
+ install-bin: dbus-java-viewer-$(VERSION).jar libdbus-java-$(VERSION).jar bin/CreateInterface bin/ListDBus bin/DBusViewer bin/DBusDaemon dbus-java-bin-$(VERSION).jar bin/DBusCall
+ 	install -d $(DESTDIR)$(JARPREFIX)
+-	install -m 644 libdbus-java-$(VERSION).jar $(DESTDIR)$(JARPREFIX)/dbus-$(VERSION).jar
+-	install -m 644 dbus-java-viewer-$(VERSION).jar $(DESTDIR)$(JARPREFIX)/dbus-viewer-$(VERSION).jar
+-	install -m 644 dbus-java-bin-$(VERSION).jar $(DESTDIR)$(JARPREFIX)/dbus-bin-$(VERSION).jar
+-	ln -sf dbus-$(VERSION).jar $(DESTDIR)$(JARPREFIX)/dbus.jar
+-	ln -sf dbus-viewer-$(VERSION).jar $(DESTDIR)$(JARPREFIX)/dbus-viewer.jar
+-	ln -sf dbus-bin-$(VERSION).jar $(DESTDIR)$(JARPREFIX)/dbus-bin.jar
++	install -m 644 libdbus-java-$(VERSION).jar $(DESTDIR)$(JARPREFIX)/dbus.jar
++	install -m 644 dbus-java-viewer-$(VERSION).jar $(DESTDIR)$(JARPREFIX)/dbus-viewer.jar
++	install -m 644 dbus-java-bin-$(VERSION).jar $(DESTDIR)$(JARPREFIX)/dbus-bin.jar
+ 	install -d $(DESTDIR)$(BINPREFIX)
+ 	install bin/DBusViewer $(DESTDIR)$(BINPREFIX)
+ 	install bin/DBusCall $(DESTDIR)$(BINPREFIX)
