@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 65bff86..1c92e1a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -19,7 +19,7 @@ DOCBOOKTOMAN?=docbook-to-man
+ 
+ # Program parameters
+ CPFLAG?=-classpath
+-JCFLAGS?=-Xlint:all -O -g:none
++JCFLAGS?=-Xlint:all -O -g:none -encoding UTF-8
+ JFLAGS+=-Djava.library.path=$(JAVAUNIXLIBDIR)
+ 
+ # Source/Class locations
